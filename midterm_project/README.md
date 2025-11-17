@@ -106,12 +106,14 @@ The **SVR model** provided the best performance in terms of R² and was selected
 
 1. Clone the repository and navigate to the project directory.  
 2. Set up the environment:
-
 uv sync
+
 3. Train the model (optional, as a pre-trained model is included):
 uv run python train.py
+
 4. Run the FastAPI server:
 uv run uvicorn predict:app --reload --host 0.0.0.0 --port 9696
+
 5. Access the API:
     Web API: http://localhost:9696
 
@@ -126,6 +128,7 @@ docker run -it -p 9696:9696 co-prediction
 
 ### Use of API
 POST request to /predict:
+
 ´´´
 curl -X POST "http://localhost:9696/predict" \
 -H "Content-Type: application/json" \
@@ -140,7 +143,9 @@ curl -X POST "http://localhost:9696/predict" \
     "AH": 0.9
 }'
 ´´´
+
 Example Response:
+
 {
   "prediction": 2.87
 }
