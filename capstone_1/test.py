@@ -1,7 +1,6 @@
 import pytest
 from fastapi.testclient import TestClient
-from predict import app  # Importáljuk a FastAPI alkalmazást, amelyet az előző kódban készítettünk
-
+from predict import app  
 # ----------------------------
 # Test Setup
 # ----------------------------
@@ -17,7 +16,7 @@ def test_predict_sunny():
         "humidity": 78.0,
         "wind_speed": 15.0,
         "precipitation": 20.0,
-        "cloud_cover": "Partly Cloudy",  # Itt helyesen küldjük a stringet
+        "cloud_cover": "Partly Cloudy",  
         "atmospheric_pressure": 1012.0,
         "uv_index": 5.0,
         "season": "Summer",
@@ -26,15 +25,15 @@ def test_predict_sunny():
     }
     response = client.post("/predict", json=payload)
     assert response.status_code == 200
-    assert response.json() == {"weather_type": "Sunny"}  # Itt a predikciót ellenőrizzük
+    assert response.json() == {"weather_type": "Sunny"}  
 
 def test_predict_rainy():
     payload = {
         "temperature": 18.0,
         "humidity": 85.0,
         "wind_speed": 10.0,
-        "precipitation": 80.0,
-        "cloud_cover": "Cloudy",  # Itt is stringként kell küldeni
+        "precipitation": 100.0,
+        "cloud_cover": "Cloudy",  
         "atmospheric_pressure": 1015.0,
         "uv_index": 3.0,
         "season": "Spring",
@@ -43,15 +42,15 @@ def test_predict_rainy():
     }
     response = client.post("/predict", json=payload)
     assert response.status_code == 200
-    assert response.json() == {"weather_type": "Rainy"}  # Itt a predikciót ellenőrizzük
+    assert response.json() == {"weather_type": "Rainy"}  
 
 def test_predict_cloudy():
     payload = {
         "temperature": 15.0,
-        "humidity": 70.0,
+        "humidity": 40.0,
         "wind_speed": 5.0,
-        "precipitation": 10.0,
-        "cloud_cover": "Cloudy",  # Itt is stringként kell küldeni
+        "precipitation": 0.0,
+        "cloud_cover": "Cloudy",  
         "atmospheric_pressure": 1010.0,
         "uv_index": 2.0,
         "season": "Fall",
@@ -60,15 +59,15 @@ def test_predict_cloudy():
     }
     response = client.post("/predict", json=payload)
     assert response.status_code == 200
-    assert response.json() == {"weather_type": "Cloudy"}  # Itt a predikciót ellenőrizzük
+    assert response.json() == {"weather_type": "Cloudy"} 
 
 def test_predict_snowy():
     payload = {
-        "temperature": -5.0,
+        "temperature": -15.0,
         "humidity": 90.0,
         "wind_speed": 12.0,
         "precipitation": 100.0,
-        "cloud_cover": "Snowy",  # Itt is stringként kell küldeni
+        "cloud_cover": "Snowy",  
         "atmospheric_pressure": 1000.0,
         "uv_index": 0.0,
         "season": "Winter",
@@ -77,11 +76,11 @@ def test_predict_snowy():
     }
     response = client.post("/predict", json=payload)
     assert response.status_code == 200
-    assert response.json() == {"weather_type": "Snowy"}  # Itt a predikciót ellenőrizzük
+    assert response.json() == {"weather_type": "Snowy"}  
 
 def test_invalid_input():
     payload = {
-        "temperature": "invalid",  # Hibás adat, nem float
+        "temperature": "invalid",  
         "humidity": 80.0,
         "wind_speed": 10.0,
         "precipitation": 50.0,

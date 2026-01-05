@@ -49,8 +49,17 @@ def preprocess_data(sample: Dict) -> pd.DataFrame:
     df.rename(columns={
         'cloud_cover': 'Cloud Cover',
         'season': 'Season',
-        'location': 'Location'
+        'location': 'Location',
+        'atmospheric_pressure': 'Atmospheric Pressure',
+        'humidity': 'Humidity',
+        'precipitation': 'Precipitation (%)',
+        'temperature': 'Temperature',
+        'uv_index': 'UV Index',
+        'visibility': 'Visibility (km)',
+        'wind_speed': 'Wind Speed'
     }, inplace=True)
+
+    print(f"Preprocessing data: {df.to_string()}")
 
     # Encoding categorical features (cloud_cover, season, location) using the fitted LabelEncoders
     for column in ["Cloud Cover", "Season", "Location"]:

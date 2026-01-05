@@ -1,11 +1,8 @@
 import pandas as pd
-import joblib
-from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import LabelEncoder
 from sklearn.pipeline import make_pipeline
 from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import StandardScaler
 import pickle
 
 # ----------------------------
@@ -33,13 +30,11 @@ def train_model(df):
     X = df.drop(columns=['Weather Type'])
     y = df['Weather Type']
 
-    # Train test split
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
 
     # Random Forest with pipeline
     pipeline = make_pipeline(
-        SimpleImputer(strategy='most_frequent'),  # Fill missing values
-        StandardScaler(),                         # Standardize the features
+        SimpleImputer(strategy='most_frequent'),  # Fill missing values                        # Standardize the features
         RandomForestClassifier(max_depth=10, 
                                min_samples_leaf=4, 
                                min_samples_split=2, 
@@ -47,11 +42,7 @@ def train_model(df):
     )
 
     # Train the model
-    pipeline.fit(X_train, y_train)
-
-    # Calculate accuracy
-    accuracy = pipeline.score(X_test, y_test)
-    print(f"Model accuracy: {accuracy * 100:.2f}%")
+    pipeline.fit(X, y)
 
     return pipeline
 
