@@ -147,7 +147,7 @@ Example Response:
 
 Known Limitations and Future Steps:
 
-In some cases Rainy and Snowy classes are not well modelled. Later Itry to find the route cause.
+In some cases Rainy and Snowy classes are not well modelled. Later I try to find the route cause. Samples pronlematic data in test.py to documnet these situations.
 
 Class Imbalance: If the weather types are imbalanced (e.g., many more sunny days than rainy ones), consider using techniques like SMOTE to address this issue.
 
