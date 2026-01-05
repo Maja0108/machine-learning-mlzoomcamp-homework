@@ -1,4 +1,6 @@
 # machine-learning-mlzoomcamp-homework
-homeworks for this course
+This repository holds my homeworks and my assignment.
 
-Hello world
+Midterm project is a regession problem. Topic is Airquality.
+Capstone 1 is a weather type classification problem to practice this part of ML.
+Capsone 2 is to be determined later, probably a fraud detection or some other imbalanced dataset problem.
